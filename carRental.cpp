@@ -220,6 +220,12 @@ void User::signup()
     cin >> id;
     cout << "Enter user type: 1 for manager, 2 for employee and 3 for customer\n";
     cin >> userType;
+    while (userType != "1" && userType != "2" && userType != "3")
+    {
+        cout << "Invalid user type\n";
+        cout << "Enter again: 1 for manager, 2 for employee and 3 for customer\n";
+        cin >> userType;
+    }
     cout << "Signup successful\n";
     if (userType == "1")
     {
@@ -462,9 +468,21 @@ void User::returnCar(string id, string carModel)
                         cout << "No of days car was rented: ";
                         int days;
                         cin >> days;
+                        while (days < 0)
+                        {
+                            cout << "Invalid days\n";
+                            cout << "No of days car was rented: ";
+                            cin >> days;
+                        }
                         cout << "Car condition: 1 for good, 2 for average and 3 for bad\n";
                         int condition;
                         cin >> condition;
+                        while (condition < 1 || condition > 3)
+                        {
+                            cout << "Invalid condition\n";
+                            cout << "Car condition: 1 for good, 2 for average and 3 for bad\n";
+                            cin >> condition;
+                        }
                         amount = days * stoi(data[i][3]);
                         if (userType == "2")
                             amount -= (amount * 0.15);
@@ -753,6 +771,12 @@ void Manager::addCE()
     cout << "Enter 1 for employee, 2 for customer: ";
     string addType;
     cin >> addType;
+    while (addType != "1" && addType != "2")
+    {
+        cout << "Invalid choice\n";
+        cout << "Enter again: 1 for employee, 2 for customer\n";
+        cin >> addType;
+    }
     cout << "Enter username: ";
     string username;
     cin >> username;
@@ -877,6 +901,12 @@ void Manager::deleteCE()
     cout << "Enter 1 for employee, 2 for customer: ";
     string delType;
     cin >> delType;
+    while (delType != "1" && delType != "2")
+    {
+        cout << "Invalid choice\n";
+        cout << "Enter again: 1 for employee, 2 for customer\n";
+        cin >> delType;
+    }
     cout << "Enter id: ";
     string id;
     cin >> id;
